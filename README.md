@@ -9,6 +9,20 @@
 * Lazarus is a state-sponsored group affiliated with North Korea, has a well-documented track record of targeting cybersecurity researchers. Among their notable techniques, one stands out for its effectiveness in tricking numerous cybersecurity experts.
 * The attackers create multiple Twitter and other social media accounts to establish credibility. Through social engineering tactics, they manipulate security researchers into engaging in collaborative research using a Microsoft Visual Studio Project, the project contains a malicious code in the vcxproj file. Consequently, when the researcher attempts to build the project, the malicious code embedded within it is executed.
 
+# Attack Scenario: Developer Environment Supply Chain Attack
+
+An attacker sends a malicious Visual Studio project to a developer, the developer opens the project, appearing to be a legitimate code sample, Upon first build, the program infects ALL Visual Studio projects on the developer's system
+
+The infected developer continues normal work, modifying and sharing projects with colleagues and each shared project carries the infection to new developer machines and when colleagues open and build these projects, their environments become infected the infection continues to spread across the development team
+
+# Impact
+
+In a successful campaign, this will create a catastrophic compromise of the entire development ecosystem .
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/af1fec4e-aeaa-4874-bf97-482201746d9a" alt="Image Description" width="600">
+</div>
+
 # technical Details
 
 This analysis is based on information shared by both [Google Threat Analysis Group](https://blog.google/threat-analysis-group/new-campaign-targeting-security-researchers/) and a security researcher [Joel Eriksson](https://x.com/OwariDa/status/1353994626303188993) who documented their experience with this attack. Their tweet highlighted effective protection measures:
@@ -60,25 +74,10 @@ A numeric value: 2907
 
 # APT38-0day-Stealer technical Details
 
-
 * Upon execution within the Visual Studio projects directory, the program infects all vcxproj files by injecting custom code. This code is designed to execute when the individual attempts to build the project .
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/60795188/221369862-ef3bd034-66ac-46e1-b2ac-d349a6cf6aa8.png" alt="Image Description" width="600">
-</div>
-
-# Attack Scenario: Developer Environment Supply Chain Attack
-
-An attacker sends a malicious Visual Studio project to a developer, the developer opens the project, appearing to be a legitimate code sample, Upon first build, the program infects ALL Visual Studio projects on the developer's system
-
-The infected developer continues normal work, modifying and sharing projects with colleagues and each shared project carries the infection to new developer machines and when colleagues open and build these projects, their environments become infected the infection continues to spread across the development team
-
-# Impact
-
-In a successful campaign, this will create a catastrophic compromise of the entire development ecosystem .
-
-<div align="center">
-  <img src="https://github.com/user-attachments/assets/f3702213-fdd2-4959-92dc-7110c0e59481" alt="Image Description" width="600">
 </div>
 
 # DEMO
